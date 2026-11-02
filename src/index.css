@@ -18,140 +18,61 @@
   --color-shape-base: #000f1f;
   --color-shape-background: #00050a;
 
-  --color-text-title: #f8fbfb;
-  --color-text-body: #e2e7e9;
-  --color-text-label: #bac6c9;
+  --color-title: #f8fbfb;
+  --color-body: #e2e7e9;
+  --color-label: #bac6c9;
 
+  /* Tipografia */
   --font-family-base: "Raleway", sans-serif;
-
-  --text-title-lg: clamp(2.5rem, 2rem + 1vw, 3rem);
-  --text-title-md: clamp(2.2rem, 1.8rem + 0.8vw, 2.5rem);
-  --text-title-sm: clamp(1.8rem, 1.5rem + 0.7vw, 2rem);
-  --text-title-xs: 1rem;
-
-  --text-subtitle: clamp(1.6rem, 1.3rem + 0.6vw, 2rem);
-  --text-body-lg: 1.25rem;
-  --text-body-md: 1rem;
-  --text-body-sm: 0.875rem;
-  --text-body-xs: 0.75rem;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-  --tracking-tag: 0.05em;
-}
+  /* Tamanhos e estilos de texto */
+  --text-title-lg: clamp(2.5rem, 2rem + 1vw, 3rem);
+  --text-title-lg--line-height: 1.1;
+  --text-title-lg--font-weight: var(--font-weight-bold);
 
-@layer base {
-  body {
-    font-family: var(--font-family-base);
-    color: var(--color-text-body);
-  }
-}
+  --text-title-md: clamp(2.2rem, 1.8rem + 0.8vw, 2.5rem);
+  --text-title-md--line-height: 1.1;
+  --text-title-md--font-weight: var(--font-weight-bold);
 
-@layer components {
-  .text-title-lg,
-  .text-title-md,
-  .text-title-sm,
-  .text-title-xs,
-  .text-subtitle,
-  .text-body-lg,
-  .text-body-md,
-  .text-body-sm,
-  .text-body-xs,
-  .text-button,
-  .text-link,
-  .text-tag {
-    font-family: var(--font-family-base);
-    letter-spacing: 0;
-    color: var(--color-text-title);
-  }
+  --text-title-sm: clamp(1.8rem, 1.5rem + 0.7vw, 2rem);
+  --text-title-sm--line-height: 1.2;
+  --text-title-sm--font-weight: var(--font-weight-bold);
 
-  .text-title-lg {
-    font-size: var(--text-title-lg);
-    font-weight: var(--font-weight-bold);
-    line-height: 1.1;
-  }
+  --text-title-xs: 1rem;
+  --text-title-xs--line-height: 1.2;
+  --text-title-xs--font-weight: var(--font-weight-bold);
 
-  .text-title-md {
-    font-size: var(--text-title-md);
-    font-weight: var(--font-weight-bold);
-    line-height: 1.1;
-  }
+  --text-subtitle: clamp(1.6rem, 1.3rem + 0.6vw, 2rem);
+  --text-subtitle--line-height: 1.6;
+  --text-subtitle--font-weight: var(--font-weight-medium);
 
-  .text-title-sm {
-    font-size: var(--text-title-sm);
-    font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-  }
+  --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 1.4;
+  --text-body-lg--font-weight: var(--font-weight-regular);
 
-  .text-title-xs {
-    font-size: var(--text-title-xs);
-    font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-  }
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.4;
+  --text-body-md--font-weight: var(--font-weight-regular);
 
-  .text-subtitle {
-    font-size: var(--text-subtitle);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.6;
-  }
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.4;
+  --text-body-sm--font-weight: var(--font-weight-regular);
 
-  .text-body-lg,
-  .text-body-md,
-  .text-body-sm,
-  .text-body-xs {
-    color: var(--color-text-body);
-  }
+  --text-body-xs: 0.75rem;
+  --text-body-xs--line-height: 1.4;
+  --text-body-xs--font-weight: var(--font-weight-regular);
 
-  .text-body-lg {
-    font-size: var(--text-body-lg);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.4;
-  }
+  --text-button: 0.875rem;
+  --text-button--font-weight: var(--font-weight-bold);
 
-  .text-body-md {
-    font-size: var(--text-body-md);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.4;
-  }
+  --text-link: 0.875rem;
+  --text-link--font-weight: var(--font-weight-medium);
 
-  .text-body-sm {
-    font-size: var(--text-body-sm);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.4;
-  }
-
-  .text-body-xs {
-    font-size: var(--text-body-xs);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.4;
-  }
-
-  .text-button {
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-    color: var(--color-text-title);
-  }
-
-  .text-link {
-    font-size: 0.875rem;
-    font-weight: var(--font-weight-medium);
-    line-height: 1.2;
-    color: var(--color-text-title);
-  }
-
-  .text-tag {
-    font-size: 0.625rem;
-    font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-    letter-spacing: var(--tracking-tag);
-    text-transform: uppercase;
-    color: var(--color-text-label);
-  }
-
-  .text-label {
-    color: var(--color-text-label);
-  }
+  --text-tag: 0.625rem;
+  --text-tag--letter-spacing: 0.05em;
+  --text-tag--font-weight: var(--font-weight-bold);
 }
