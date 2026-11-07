@@ -1,6 +1,7 @@
 import { Hero } from "./components/Hero"
 import { KitSection } from "./components/KitSection"
 import { PlansSection } from "./components/PlansSection"
+import { Footer } from "./components/Footer"
 
 function App() {
  
@@ -11,6 +12,7 @@ function App() {
     <Hero/>
     <KitSection />
     <PlansSection />
+    <Footer />
     </div>
     
 
