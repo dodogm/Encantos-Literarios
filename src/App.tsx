@@ -1,5 +1,6 @@
 import { Hero } from "./components/Hero"
 import { KitSection } from "./components/KitSection"
+import { PlansSection } from "./components/PlansSection"
 
 function App() {
  
@@ -9,6 +10,7 @@ function App() {
     
     <Hero/>
     <KitSection />
+    <PlansSection />
     </div>
     
 
