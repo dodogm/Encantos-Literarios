@@ -1,75 +1,116 @@
-# React + TypeScript + Vite
+# 📚 Encantos Literários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma landing page moderna e responsiva para a livraria **Encantos Literários**, desenvolvida com foco em uma experiência visual agradável para amantes da leitura.
 
-Currently, two official plugins are available:
+## ✨ Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O Encantos Literários é um projeto Front-end criado para apresentar uma livraria fictícia de forma elegante e atrativa. A aplicação destaca livros, seções informativas e elementos visuais que proporcionam uma navegação intuitiva e agradável.
 
-## React Compiler
+O projeto foi desenvolvido com foco em responsividade, desempenho e boas práticas de desenvolvimento web.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- Tailwind CSS
+- JavaScript
+- HTML5
+- Git e GitHub
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🎯 Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 📖 Apresentação da livraria
+- 🎨 Interface moderna e intuitiva
+- 📱 Layout responsivo para dispositivos móveis e desktop
+- ⚡ Navegação rápida e otimizada
+- 📚 Destaque para livros e conteúdos literários
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Estrutura do Projeto
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+Encantos-Literarios/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 💻 Como Executar o Projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Clone o repositório
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/dodogm/Encantos-Literarios.git
 ```
+
+### 2. Acesse a pasta do projeto
+
+```bash
+cd Encantos-Literarios
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Execute o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+Após executar o comando, o terminal exibirá uma URL semelhante a:
+
+```text
+http://localhost:5173
+```
+
+Abra o endereço em seu navegador para visualizar o projeto.
+
+## 🌐 Visualizando a Aplicação
+
+Quando o servidor estiver em execução, você poderá acompanhar alterações em tempo real graças ao Hot Reload do Vite.
+
+Sempre que modificar algum arquivo do projeto, a página será atualizada automaticamente no navegador.
+
+## 📸 Preview
+
+
+
+
+https://encantos-literarios-six.vercel.app/
+
+
+## 📚 Aprendizados
+
+Durante o desenvolvimento deste projeto foram praticados conceitos como:
+
+- Componentização com React
+- Estruturação de layouts modernos
+- Estilização com Tailwind CSS
+- Responsividade
+- Organização de componentes
+- Gerenciamento de assets
+- Boas práticas de desenvolvimento Front-end
+
+## 👨‍💻 Autor
+
+**Douglas**
+
+- GitHub: https://github.com/dodogm
+
+## 🔗 Repositório
+
+https://github.com/dodogm/Encantos-Literarios
+
+## 📄 Licença
+
+Este projeto foi desenvolvido para fins de estudo e aprimoramento das habilidades em desenvolvimento Front-end.
