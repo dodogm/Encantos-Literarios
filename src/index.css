@@ -67,6 +67,7 @@
   --text-body-xs--font-weight: var(--font-weight-regular);
 
   --text-button: 0.875rem;
+  --text-button--line-height: auto
   --text-button--font-weight: var(--font-weight-bold);
 
   --text-link: 0.875rem;
@@ -75,4 +76,170 @@
   --text-tag: 0.625rem;
   --text-tag--letter-spacing: 0.05em;
   --text-tag--font-weight: var(--font-weight-bold);
+
+  /* Animações */
+    --animate-fade-in: fade-in 2.5s ease-in forwards;
+    --animate-fade: fade-in 1s 1s ease-in forwards ;
+
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade {
+     from { opacity: 0; }
+    to { opacity: 1; }
+
+  }
+}
+
+
+
+:root {
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Hero: parágrafo interativo ---------- */
+.hero-paragraph {
+  transition: color 300ms ease;
+}
+
+.mystery-icon {
+  opacity: 0;
+  transition: opacity 400ms ease-out, transform 300ms var(--ease-in-out),
+   scale 300ms ease-in-out, rotate 300ms ease-in-out;
+}
+
+.mystery-icon[data-visible="true"] {
+  opacity: 1;
+  
+}
+
+/* ---------- Kit mensal ---------- */
+.kit-bookmark {
+  transition: transform 650ms var(--ease-out-soft), opacity 250ms ease-out;
+}
+
+.kit-fade {
+  transition: opacity 500ms ease-out, transform 500ms var(--ease-out-soft);
+}
+
+/* grupo de cima: marcadores saem de trás do livro e surge o rótulo "Livro em capa dura" */
+[data-kit-top="false"] .kit-bookmark-yellow {
+  opacity: 0;
+  transform: translateX(-90%) rotate(-12deg);
+}
+
+[data-kit-top="false"] .kit-bookmark-purple {
+  opacity: 0;
+  transform: translateX(-140%) rotate(-23deg);
+}
+
+[data-kit-top="true"] .kit-bookmark-purple {
+  transition-delay: 80ms;
+}
+
+[data-kit-top="false"] .kit-fade-top {
+  opacity: 0;
+}
+
+[data-kit-top="true"] .kit-fade-top {
+  transition-delay: 380ms;
+}
+
+/* grupo de baixo: broche, setas e rótulos */
+[data-kit-bottom="false"] .kit-pin {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+[data-kit-bottom="false"] .kit-fade-bottom {
+  opacity: 0;
+}
+
+[data-kit-bottom="true"] .kit-fade-bottom {
+  transition-delay: 250ms;
+}
+
+/* ---------- Planos: cards laterais "abrem em leque" a partir do card central ---------- */
+.plan-twinkle {
+  animation: twinkle 3.2s ease-in-out infinite alternate;
+}
+
+.plan-twinkle-delayed {
+  animation-delay: 1.4s;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.35; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+@media (min-width: 701px) {
+  .plan-fan {
+    transition: transform 800ms var(--ease-out-soft), opacity 300ms ease-out;
+  }
+
+  /* o conteúdo dos cards laterais surge depois da "casca" */
+  .plan-fan > article > * {
+    transition: opacity 400ms ease-out 450ms;
+  }
+
+  [data-fan="closed"] .plan-fan {
+    opacity: 0;
+    transition-delay: 0ms;
+  }
+
+  [data-fan="closed"] .plan-fan-left {
+    transform: translateX(calc(100% + 1rem)) rotate(8deg);
+  }
+
+  [data-fan="closed"] .plan-fan-right {
+    transform: translateX(calc(-100% - 1rem)) rotate(-8deg);
+  }
+
+  [data-fan="closed"] .plan-fan > article > * {
+    opacity: 0;
+    transition-delay: 0ms;
+  }
+}
+
+/* ---------- Rodapé ---------- */
+.footer-social::before {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  border-radius: 9999px;
+  background: var(--color-shape-hover);
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.footer-social > span {
+  position: relative;
+  transition: background-color 250ms ease;
+}
+
+@media (hover: hover) {
+  .footer-social:hover::before {
+    opacity: 1;
+  }
+
+  .footer-social:hover > span {
+    background-color: var(--color-title);
+  }
+}
+
+/* ---------- Acessibilidade: movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
 }

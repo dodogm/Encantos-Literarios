@@ -29,7 +29,7 @@ const footerGroups = [
 
 export function Footer() {
   return (
-    <footer className="relative isolate min-h-[508px] overflow-hidden  font-[family-name:var(--font-family-base)] max-[700px]:min-h-0">
+    <footer className=" relative isolate max-h-[415px] overflow-hidden max-[900px]:min-h-0">
       <img
         className="pointer-events-none absolute inset-0 z-[-1] h-full w-full object-cover object-top"
         src={BookTraceBackgroundPng}
@@ -37,26 +37,26 @@ export function Footer() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto flex w-[min(82%,1416px)] justify-between pt-[235px] max-[700px]:w-[calc(100%-40px)] max-[700px]:flex-col max-[700px]:gap-12 max-[700px]:pt-24 max-[700px]:pb-12">
+      <div className="relative mx-auto flex p-40 justify-between pt- max-[900px]:w-[calc(100%-40px)] max-[900px]:flex-col max-[900px]:gap-12 max-[900px]:pt-24 max-[900px]:pb-12">
         <div className="w-[330px] max-w-full">
           <img
-            className="block h-auto w-full max-w-[330px]"
+            className="block h-auto w-full max-w-[330px] max-[900px]:max-w-[230px]"
             src={LogoSvg}
             alt="Encantos Literários"
           />
 
-          <div className="mt-[21px] border-t border-shape-stroke/70 pt-6">
-            <ul className="flex items-center justify-between px-3">
+          <div className="mt-[21px] border-t border-shape-stroke/70 pt-6 max-[900px]:max-w-[230px]">
+            <ul className="flex items-center justify-between px-3 max-[900px]:px-0">
               {socialLinks.map(({ name, icon }) => (
-                <li key={name}>
-                  <img
-                    className="h-6 w-6"
-                    src={icon}
-                    alt={name}
+                <li key={name} className="footer-social relative cursor-pointer">
+                  <span
+                    className="block h-6 w-6 bg-blue-light max-[900px]:h-5 max-[900px]:w-5"
+                    role="img"
+                    aria-label={name}
                     title={name}
                     style={{
-                      filter:
-                        "brightness(0) saturate(100%) invert(53%) sepia(28%) saturate(1391%) hue-rotate(159deg) brightness(94%) contrast(85%)",
+                      mask: `url("${icon}") center / contain no-repeat`,
+                      WebkitMask: `url("${icon}") center / contain no-repeat`,
                     }}
                   />
                 </li>
@@ -66,19 +66,19 @@ export function Footer() {
         </div>
 
         <nav
-          className="flex gap-[124px] pt-[5px] max-[900px]:gap-12 max-[700px]:justify-between max-[700px]:gap-6 max-[700px]:pt-0"
+          className="flex gap-[124px] pt-[5px] max-[900px]:justify-between max-[900px]:gap-6 max-[900px]:pt-0"
           aria-label="Links do rodapé"
         >
           {footerGroups.map(({ title, links }) => (
             <div key={title} className="min-w-[108px]">
-              <h2 className="m-0 text-[20px] leading-[1.3] font-bold text-title max-[700px]:text-lg">
+              <h2 className="m-0 text-[20px] leading-[1.3] font-bold text-title max-[900px]:text-lg">
                 {title}
               </h2>
-              <ul className="mt-[26px] space-y-[20px]">
+              <ul className="mt-[26px] space-y-[20px] max-[900px]:mt-4 max-[900px]:space-y-3">
                 {links.map((link) => (
                   <li
                     key={link}
-                    className="text-[17px] leading-[1.3] font-medium text-blue-light max-[700px]:text-sm"
+                    className="cursor-pointer text-[17px] leading-[1.3] font-medium text-blue-light transition-colors duration-250 ease-in-out hover:text-title max-[900px]:text-sm"
                   >
                     {link}
                   </li>

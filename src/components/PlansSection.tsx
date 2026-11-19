@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react"
+import { useInView } from "../hooks/useInView"
 import PricingBackgroundPng from "../assets/pricing-background.png"
-import LogoSvg from "../assets/logo.svg"
+import BunnySvg from "../assets/icons/Bunny.svg"
 import StarSvg from "../assets/icons/star.svg"
 
 type Plan = {
@@ -61,31 +63,31 @@ function PlanCard({ plan }: { plan: Plan }) {
 
   return (
     <article
-      className={`relative flex min-h-[252px] flex-col rounded-[18px] border border-shape-stroke bg-[#001324] px-[18px] pt-[19px] pb-[15px] text-left shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition-colors max-[700px]:min-h-[236px] max-[700px]:rounded-2xl max-[700px]:px-5 ${plan.popular ? "z-20 min-h-[264px] border-blue-dark bg-blue-low pt-[21px] max-[700px]:min-h-[250px]" : "z-10"}`}
+      className={`relative flex min-h-[352px] flex-col rounded-[24px] borderborder-shape-stroke bg-shape-base hover:bg-shape-hover px-[25px] pt-[27px] pb-5 text-left shadow-lg shadow-shape-base/50 transition-colors max-[700px]:min-h-[326px] max-[700px]:rounded-[20px] max-[700px]:px-[26px] max-[700px]:pt-7 max-[700px]:pb-5`}
       aria-label={`Plano ${plan.name}`}
     >
       <div className="flex items-center justify-between">
-        <h3 className={`m-0 text-[11px] leading-none font-bold ${accentColor}`}>{plan.name}</h3>
+        <h3 className={`m-0 text-[14px] leading-none font-bold ${accentColor} `}>{plan.name}</h3>
         {plan.popular && (
-          <span className="rounded-full bg-blue-dark px-3 py-[5px] text-[7px] leading-none font-bold text-title">
+          <span className="rounded-full bg-blue-dark px-3 py-[6px] text-[8px] leading-none font-bold text-title ">
             POPULAR
           </span>
         )}
       </div>
 
-      <p className="mt-[19px] flex items-baseline gap-1 whitespace-nowrap text-title">
-        <span className="text-[25px] leading-none font-bold max-[700px]:text-[24px]">R$ {plan.price}</span>
-        <span className="text-[9px] leading-none font-medium">/mês</span>
+      <p className="mt-6 flex items-baseline gap-1 whitespace-nowrap text-title ">
+        <span className="text-[34px] leading-none font-bold ">R$ {plan.price}</span>
+        <span className="text-[11px] leading-none font-medium ">/mês</span>
       </p>
-      <p className="mt-[7px] text-[9px] leading-none font-normal text-label">
+      <p className="mt-2 text-[11px] leading-none font-normal text-label  ">
         R$ {plan.annualPrice} por ano
       </p>
 
-      <ul className="mt-auto space-y-[7px] pt-[19px]">
+      <ul className="mt-auto space-y-[9px] pt-6 ">
         {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-[6px] text-[8px] leading-[1.25] text-body">
+          <li key={feature} className="flex items-start gap-2 text-[10px] leading-[1.25] text-body ">
             <img
-              className={`mt-px h-[10px] w-[10px] shrink-0 ${plan.accent === "blue" ? "hue-rotate-[-95deg]" : ""}`}
+              className={`mt-px h-3 w-3 shrink-0  ${plan.accent === "blue" ? "hue-rotate-[-95deg]" : ""}`}
               src={StarSvg}
               alt=""
               aria-hidden="true"
@@ -97,7 +99,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       <button
         type="button"
-        className={`mt-[13px] flex min-h-[30px] w-full items-center justify-center rounded-[7px] px-2 text-[9px] leading-none font-bold text-title transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-light ${buttonColor}`}
+        className={`mt-[18px] flex min-h-[40px] w-full items-center justify-center rounded-[9px] px-2 text-[11px] leading-none font-bold text-title transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-light  ${buttonColor}`}
       >
         {plan.action}
       </button>
@@ -106,9 +108,20 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export function PlansSection() {
+  // Como no protótipo: só o card central aparece e os laterais "abrem em leque" a partir dele.
+  // Abre ao passar o mouse / focar no card central; sem interação, abre sozinho depois de um instante.
+  const [gridRef, gridInView] = useInView<HTMLDivElement>({ threshold: 0.5 })
+  const [opened, setOpened] = useState(false)
+
+  useEffect(() => {
+    if (!gridInView || opened) return
+    const timer = window.setTimeout(() => setOpened(true), 1800)
+    return () => window.clearTimeout(timer)
+  }, [gridInView, opened])
+
   return (
     <section
-      className="relative isolate min-h-[max(768px,100svh)] overflow-hidden bg-shape-background px-5 pt-[135px] pb-16 font-[family-name:var(--font-family-base)] text-body max-[700px]:min-h-0 max-[700px]:px-4 max-[700px]:pt-20"
+      className="relative isolate min-h-[clamp(900px,78vw,1120px)] overflow-hidden bg-shape-background px-5 pt-[clamp(160px,16vw,230px)] pb-20 text-body max-[700px]:min-h-[640px] max-[700px]:px-5 max-[700px]:pt-[90px] max-[700px]:pb-12"
       aria-labelledby="plans-title"
     >
       <img
@@ -120,7 +133,7 @@ export function PlansSection() {
 
       <header className="relative z-10 text-center">
         <h2
-          className="m-0 text-[18px] leading-[1.25] font-bold text-title max-[700px]:text-xl"
+          className="m-0 text-[clamp(1.5rem,2vw,2rem)] leading-[1.25] font-bold text-title "
           id="plans-title"
         >
           Assinatura
@@ -129,34 +142,44 @@ export function PlansSection() {
         </h2>
       </header>
 
-      <div className="relative mx-auto mt-[82px] grid w-full max-w-[560px] grid-cols-3 items-center gap-[10px] max-[700px]:mt-10 max-[700px]:max-w-[360px] max-[700px]:grid-cols-1 max-[700px]:gap-5">
-        <div className="relative z-10 translate-y-[17px] -rotate-[8deg] max-[700px]:translate-y-0 max-[700px]:rotate-0">
+      <div
+        ref={gridRef}
+        data-fan={opened ? "open" : "closed"}
+        className="relative mx-auto mt-[clamp(96px,9vw,130px)] grid w-full max-w-[800px] grid-cols-3 items-center gap-4 max-[700px]:mt-10 max-[700px]:ml-6 max-[700px]:flex max-[700px]:w-[calc(100%-24px)] max-[700px]:max-w-none max-[700px]:snap-x max-[700px]:snap-mandatory max-[700px]:gap-4 max-[700px]:overflow-x-auto max-[700px]:pb-2"
+      >
+        <div className="plan-fan plan-fan-left relative z-10 translate-y-6 -rotate-[8deg] max-[700px]:w-[222px] max-[700px]:shrink-0 max-[700px]:snap-start max-[700px]:translate-y-0 max-[700px]:rotate-0">
           <PlanCard plan={plans[0]} />
+           <img
+          className="plan-twinkle pointer-events-none absolute -top-2 -left-7 h-[24px] w-[24px] -rotate-12 max-[700px]:hidden"
+          src={StarSvg}
+          alt=""
+          aria-hidden="true"
+        />
         </div>
 
-        <div className="relative z-20 -translate-y-[8px] max-[700px]:translate-y-0">
-          <div className="pointer-events-none absolute -top-[31px] left-1/2 z-20 h-[36px] w-[34px] -translate-x-1/2 overflow-hidden max-[700px]:left-5 max-[700px]:translate-x-0">
-            <img className="absolute left-0 top-0 h-auto w-[138px] max-w-none" src={LogoSvg} alt="" aria-hidden="true" />
+        <div
+          onMouseEnter={() => setOpened(true)}
+          onFocus={() => setOpened(true)}
+          className="relative z-20 -translate-y-[11px] max-[700px]:w-[222px] max-[700px]:shrink-0 max-[700px]:snap-start max-[700px]:translate-y-0"
+        >
+          <div className="pointer-events-none absolute -top-[47px] left-10 z-20 h-[50px] w-[48px] -translate-x-1/2 overflow-hidden max-[700px]:hidden">
+            <img className="" src={BunnySvg} alt="" aria-hidden="true" />
           </div>
           <PlanCard plan={plans[1]} />
         </div>
 
-        <div className="relative z-10 translate-y-[17px] rotate-[8deg] max-[700px]:translate-y-0 max-[700px]:rotate-0">
+        <div className="plan-fan plan-fan-right relative z-10 translate-y-6 rotate-[8deg] max-[700px]:w-[222px] max-[700px]:shrink-0 max-[700px]:snap-start max-[700px]:translate-y-0 max-[700px]:rotate-0">
+            <img
+          className="plan-twinkle plan-twinkle-delayed pointer-events-none absolute -right-7 -bottom-5 h-[24px] w-[24px] rotate-12 max-[700px]:hidden"
+          src={StarSvg}
+          alt=""
+          aria-hidden="true"
+        />
           <PlanCard plan={plans[2]} />
         </div>
 
-        <img
-          className="pointer-events-none absolute -top-2 -left-7 h-[24px] w-[24px] -rotate-12 max-[700px]:hidden"
-          src={StarSvg}
-          alt=""
-          aria-hidden="true"
-        />
-        <img
-          className="pointer-events-none absolute -right-7 -bottom-5 h-[24px] w-[24px] rotate-12 max-[700px]:hidden"
-          src={StarSvg}
-          alt=""
-          aria-hidden="true"
-        />
+       
+      
       </div>
     </section>
   )
